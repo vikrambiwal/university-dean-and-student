@@ -3,8 +3,8 @@ package controllers
 import (
 	"fmt"
 	"net/http"
-	"university-dean-and-student/models"
-	"university-dean-and-student/utility"
+	"university-dean-and-student/app/models"
+	"university-dean-and-student/app/utility"
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"

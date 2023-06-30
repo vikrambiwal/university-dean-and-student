@@ -2,9 +2,9 @@ package main
 
 import (
 	"log"
-	"university-dean-and-student/controllers"
 
-	"github.com/gin-gonic/gin"
+	"university-dean-and-student/app/routes"
+
 	"github.com/joho/godotenv"
 )
 
@@ -14,11 +14,6 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error loading .env file")
 	}
-	router := gin.Default()
-	public := router.Group("/api")
 
-	public.POST("/login", controllers.Login)
-	public.POST("/register", controllers.Register)
-
-	router.Run("localhost:8080")
+	routes.SetupRoutes()
 }

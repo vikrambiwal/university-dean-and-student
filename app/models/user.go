@@ -1,8 +1,7 @@
 package models
 
 import (
-	"fmt"
-	"university-dean-and-student/utility"
+	"university-dean-and-student/app/utility"
 
 	"github.com/go-playground/validator/v10"
 )
@@ -28,9 +27,17 @@ func (user User) ValidateUser() error {
 	validate := validator.New()
 
 	err := validate.Struct(&user)
-	fmt.Println("zzzzzz", user, err)
 	if err != nil {
 		return err.(validator.ValidationErrors)
 	}
 	return nil
+}
+
+func AuthUser(token string) *User {
+	var user User
+	result := map[string]string{"token": token}
+
+	utility.Database().Find(&user, result)
+	return &user
+
 }
