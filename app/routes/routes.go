@@ -14,7 +14,9 @@ func SetupRoutes() {
 	public.POST("/register", controllers.Register)
 
 	private := router.Group("/api", TokenAuthMiddleware())
-	private.POST("/sessions", controllers.Sessions)
+	private.POST("/session", controllers.Session)
+	private.GET("/sessions", controllers.Sessions)
+	private.GET("/dean_list", controllers.DeanList)
 
 	router.Run("localhost:8080")
 }
